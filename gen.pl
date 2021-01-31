@@ -9,9 +9,9 @@ print "Getting url of last dump file\n";
 chomp(@BGP4_DIR);
 chomp(@BGP6_DIR);
 
+# Temp
 $BGP4_DIR[-1] = "2021.01";
 $BGP6_DIR[-1] = "2021.01";
-
 
 @BGP4_FILE = `curl -s $BGP4_URL/$BGP4_DIR[-1]/RIBS/ --list-only`;
 @BGP6_FILE = `curl -s $BGP6_URL/$BGP6_DIR[-1]/RIBS/ --list-only`;
@@ -22,7 +22,7 @@ print "Downloading BGPv4 RIB MRT file\n";
 system qq(wget -O ribv4.bz2 $BGP4_URL/$BGP4_DIR[-1]/RIBS/$BGP4_FILE[-1]);
 
 print "Downloading BGPv6 RIB MRT file\n";
-system qq(wget -O ribv6.bz2 $BGP4_URL/$BGP4_DIR[-1]/RIBS/$BGP4_FILE[-1]);
+system qq(wget -O ribv6.bz2 $BGP6_URL/$BGP6_DIR[-1]/RIBS/$BGP6_FILE[-1]);
 
 print "Generating BGPv4 routes file\n";
 system qq(bzcat ribv4.bz2 | bgpdump -vm - | cut -d '|' -f '6,7' |grep -v "0.0.0.0/0" > v4.txt);
