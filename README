@@ -1,0 +1,9 @@
+Example on how to generate bitcoin asmaps
+
+1. Install bgpdump (apt install bgpdump / https://github.com/RIPE-NCC/bgpdump)
+2. Install bitcoin-asmap (https://github.com/sipa/bitcoin/tree/202004_asmap_tool)
+3. Run gen.pl
+
+
+---
+
